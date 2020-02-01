@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="heb" dir="rtl">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        label{
+            color: white;
+        }
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        /* Style inputs */
+        input[type=text], select, textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          margin-top: 6px;
+          margin-bottom: 16px;
+          resize: vertical;
+        }
+
+        input[type=submit] {
+          background-color: #4CAF50;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+
+        /* Style the container/contact section */
+        .container {
+          border-radius: 5px;
+          background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../static/img/photo-1529753253655-470be9a42781.jpeg");
+          background-color: #f2f2f2;
+          padding: 10px;
+        }
+
+        /* Create two columns that float next to eachother */
+        .column {
+          float: left;
+          width: 50%;
+          margin-top: 6px;
+          padding: 20px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+          .column, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+          }
+        }
+    </style>
+</head>
+    <body>
+        <div class="container">
+          <div style="text-align:center; color: white">
+            <h2>צרו קשר</h2>
+            <h3>   תקפצו לקפה או פשוט תשאירו הודעה <i class="fas fa-dog"></i></h3>
+          </div>
+          <div class="row">
+            <div class="column">
+              <img src="../static/img/logo.png" style="width:70%; padding-right: 50px">
+            </div>
+            <div class="column">
+              <form method="POST" action="/contact">
+                <label for="fname">שם פרטי</label>
+                <input type="text" id="fname" name="firstname" placeholder="שם פרטי">
+                <label for="lname">שם משפחה</label>
+                <input type="text" id="lname" name="lastname" placeholder="שם משפחה">
+                <label for="mail">מייל</label>
+                <input type="text" id="mail" name="mail" placeholder="מייל">
+                <label for="phone">טלפון</label>
+                <input type="text" id="phone" name="phone" placeholder="טלפון">
+                <label for="subject">נושא</label>
+                  <label>
+                      <select name="contact_type">
+                          <option value="adopt">אימוץ חיה</option>
+                          <option value="Volunteer">התנדבות</option>
+                          <option value="donate">תרומות</option>
+                          <option value="goodword">מילה טובה</option>
+                          <option value="complaints">תלונות</option>
+                      </select>
+                  </label>
+                  {% if data %}
+                    <textarea id="subject" name="subject" placeholder="כתוב לנו משהו" style="height:170px"> שלום, ברצוני לאמץ את {{ data['name'] }} {{ data['id'] }} </textarea>
+                  {% else %}
+                    <textarea id="subject" name="subject" placeholder="כתוב לנו משהו" style="height:170px"></textarea>
+                  {% endif %}
+                  <input type="submit" value="שלח">
+              </form>
+            </div>
+              <p style="text-align:left; padding-left: 40px; color: white">כתובתנו: הערבה 20, חולון 58670</p>
+              <p style="text-align:left; padding-left: 90px; color: white">טל: 0542120433</p>
+          </div>
+            <a href="/" style="color: white">Home</a>
+        </div>
+    </body>
+</html>

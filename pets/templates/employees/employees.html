@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-5 is-offset-4">
+    <div class="form-row">
+        <div class="col-md-0 mb-1">
+            <h3 class="title">Employees | <a href="/">Home</a></h3>
+        </div>
+        <div class="col-md-0 mb-1">
+            <a href="/employees/add">
+                <button type="button" class="btn btn-primary btn-sm">Add</button>
+            </a>
+        </div>
+    </div>
+
+    {% include "notifications.html" ignore missing %}
+
+    <div class="box">
+        {% if employees_list %}
+            <table class="table" id="myTable">
+                <tr>
+                    <th>ID<br><input type="text" id="id" onkeyup="myFunction(0, 'id')" placeholder="Filter by id"></th>
+                    <th>Name<br><input type="text" id="name" onkeyup="myFunction(1, 'name')" placeholder="Filter by name"></th>
+                    <th>Phone<br><input type="text" id="phone_number" onkeyup="myFunction(2, 'phone_number')" placeholder="Filter by phone"></th>
+                    <th>Manager<br><input type="text" id="is_manager" onkeyup="myFunction(3, 'is_manager')" placeholder="Filter by manager"></th>
+                    <th>Employed<br><input type="text" id="is_employed" onkeyup="myFunction(4, 'is_employed')" placeholder="Filter by employed"></th>
+                </tr>
+            {% for employee in employees_list %}
+                <tr>
+                    <td>
+                        <a href="/employees/{{ employee.id }}">{{ employee.id }}</a>
+                    </td>
+                    <td>{{ employee.name}}</td>
+                    <td>{{ employee.phone_number }}</td>
+                    <td>{{ "Yes" if employee.is_manager else "No" }}</td>
+                    <td>{{ "Yes" if employee.is_employed else "No" }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+          <h1>No Employees</h1>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    function myFunction(field_index, field) {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById(field);
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[field_index];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+</script>
+
+{% endblock %}

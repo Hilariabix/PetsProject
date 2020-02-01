@@ -1,0 +1,456 @@
+/*-------------------------------------------------*/
+/*-------------      BASIC SETUP    ---------------*/
+/*-------------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+
+
+/*-------------------------------------------------*/
+/*-------------  REUSABLE COMPONENTS  -------------*/
+/*-------------------------------------------------*/
+
+
+
+/*--------  PARAGRAPHS  ---------*/
+
+.long-copy {
+    margin: 10px 13px;
+    text-align: center;
+}
+
+.explain {
+    margin-top: 7px;
+    margin-right: 20px;
+    padding-bottom: 10px
+}
+
+
+/*--------  ICONS  ---------*/
+
+.icon-big {
+    font-size: 120%;
+    color: #573014;
+    color: #573014;
+
+    
+}
+
+/*--------  PICTURES  ---------*/
+
+.adoption {
+    padding-top: 70px;
+    padding-right: 30px;
+}
+
+.logo {
+    height: 150px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+/*--------  HEADINGS  ---------*/
+
+h1, h2, h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h1, h2 {
+    letter-spacing: 1px;
+}
+
+h2,h3 {
+    color: #573014;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: cornsilk;
+    font-size: 240%;
+    word-spacing: 4px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: beige;
+    content: " ";
+    width: 200px;
+    margin: 0 auto;
+}
+
+h3 {
+    font-size: 130%;
+    
+}
+
+/*--------  BUTTONS  ---------*/
+
+.btn:link,
+.btn:visited{
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 200px;
+    transition: background-color 0.5s;
+    color: #fff9e8;
+    margin-right: 10px;
+}
+.btn-full:link,
+.btn-full:visited{
+    background-color: rgba(222, 184, 135, 0.65);
+    border: 1px solid rgba(255, 228, 196, 0.65);
+}
+
+.btn-ghost:link,
+.btn-ghost:visited{
+    background-color: rgba(255, 228, 196, 0.65);
+    border: 1px solid rgba(222, 184, 135, 0.65);
+}
+
+.btn:hover,
+.btn:active {
+    background-color: rgba(244, 171, 85, 0.30);
+    border: 1px solid bisque;
+}
+
+/*-------------------------------------------------*/
+/*-------------------  HEADER  --------------------*/
+/*-------------------------------------------------*/
+
+header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/background-dog.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+    padding-top: 50px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 20px;
+    
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+    padding: 4px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 150%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.5s
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #f4ca98;
+}
+
+/*-------------------------------------------------*/
+/*-------------------  ADOPTION  ------------------*/
+/*-------------------------------------------------*/
+
+.adoption-section {
+    padding: 0;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.animal-details {
+  background-color: #4CAF50;
+  color: #3b34ff;
+  font-size: 16px;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/*------------------------------------*/
+/*------------  DOGS  ------------*/
+/*------------------------------------*/
+
+.adoption_dogs {
+    list-style: none;
+    width: 100%;
+}
+
+.adoption_dogs li {
+    display: block;
+    float: left;
+    width: 25%
+}
+
+.dog-photo {
+    width: 90%;
+    margin: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.dog-photo img {
+    opacity: 1;
+    width: 100%;
+    height: auto;
+    padding-bottom: 150px;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.dog-photo img:hover {
+    opacity: 0.7;
+    transform: scale(1.03);
+}
+
+/*------------------------------------*/
+/*------------  CATS  ------------*/
+/*------------------------------------*/
+
+.adoption_cats {
+    list-style: none;
+    width: 100%;
+}
+
+.adoption_cats li {
+    display: block;
+    float: left;
+    width: 25%
+}
+
+.cat-photo {
+    width: 90%;
+    margin: 0;
+    overflow: hidden;
+    background-color: #fff6f6;
+    position: relative;
+}
+
+.cat-photo img {
+    opacity: 1;
+    width: 100%;
+    height: auto;
+    padding-bottom: 100px;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+
+
+.cat-photo:hover .image {
+  opacity: 0.3;
+}
+
+.cat-photo img:hover {
+    opacity: 0.1;
+    transform: scale(1.03);
+}
+
+.cat-photo img:hover .middle {
+  opacity: 1;
+}
+
+
+
+/*!*------------------------------------*!*/
+/*!*------------  manager  ------------*!*/
+/*!*------------------------------------*!*/
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+/* adoption form */
+
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+

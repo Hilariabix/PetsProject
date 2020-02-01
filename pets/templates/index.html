@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+    <head>
+
+        <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/static/css/Grid.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300|Varela+Round&display=swap" rel="stylesheet">
+        <title>Pets</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                text-align: center;
+            }
+            .main_row{
+                max-width: 1140px;
+                margin: 0 auto;
+                display: inline-block;
+            }
+
+            section {
+                padding: 60px 0;
+                text-align: center;
+            }
+
+            .wrap {
+              display: inline-block;
+              width: 90%;
+              margin: 0;
+              position: relative;
+            }
+
+            .wrap img {
+                opacity: 1;
+                width: 100%;
+                height: auto;
+                display: block;
+                transition:opacity .25s ease;
+            }
+
+            .wrap:hover img {
+              opacity: .2;
+            }
+
+            .content {
+              position: absolute;
+              top:0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: -1;
+            }
+            a:link {
+              color: #fff6f6;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:visited {
+              color: #fff6f6;
+              background-color: transparent;
+              text-decoration: none;
+            }
+            #myBtn {
+              display: none;
+              position: fixed;
+              bottom: 20px;
+              right: 30px;
+              z-index: 99;
+              font-size: 18px;
+              border: none;
+              outline: none;
+              background-color: saddlebrown;
+              color: white;
+              cursor: pointer;
+              padding: 15px;
+              border-radius: 4px;
+            }
+
+            #myBtn:hover {
+              background-color: #555;
+            }
+
+            div.container {
+                text-align: center;
+                padding-top: 10%;
+            }
+
+            div.wrap {
+                width: 250px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                height: 250px;
+            }
+        </style>
+    </head>
+    <body>
+        <button style="height: 70px; width: 60px; border-radius: 80%; font-size: small" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-paw"></i><br>חזרה <br>למעלה</button>
+        <header style="text-shadow: 2px 2px 4px #000000;">
+            <nav>
+                <div class="main_row">
+                    <img src="/static/img/logo.png" alt="Pets logo" class="logo">
+                    <ul class="main-nav">
+                        <li><a href="#why-to-adopt">למה לאמץ?</a></li>
+                        <li><a href="#adopt-dogs">אמץ כלב</a></li>
+                        <li><a href="#adopt-cats">אמץ חתול</a></li>
+                        <li><a href="#important">חשוב לדעת!</a></li>
+                        <li><a href="#about_us">עלינו</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="hero-text-box">
+                <h1><strong>Pets &mdash; אמץ חבר היום!</strong> </h1>
+                <a class="btn btn-full" href="#why-to-adopt">למה לאמץ?</a>
+                <a class="btn btn-ghost" href="#adopt-dogs">אימוץ כלבים</a>
+                <a class="btn btn-full" href="#adopt-cats">אימוץ חתולים</a>
+                <a class="btn btn-full" href="#important">חשוב לדעת!</a>
+                <a class="btn btn-full" href="#about_us">עלינו</a>
+            </div>
+            
+        </header>
+
+        <section class="why-to-adopt" id="why-to-adopt">
+            <div class="main_row">
+                <h2><i class="fas fa-paw icon-big"></i> למה לאמץ?</h2>
+                <p class="long-copy">
+                    הוכח כי בעלי חיים תורמים לבני האדם מבחינה בריאותית, רגשית וחברתית. מחקרים רבים מוכיחים את התועלת שבקשר של ילדים עם חיות מחמד:
+                </p>    
+                
+            </div>
+            <div class="main_row">
+                <div class="col span-1-of-4">
+                    <img src="/static/img/love&dog.jpg" alt="love adoption" class="adoption">
+                </div>
+                <div class="col span-1-of-4">
+                    <h3><i class="far fa-grin-hearts icon-big"></i> רגישות ואחריות</h3>
+                    <ol class="explain">
+                        <li >ילדים לומדים מהם הצרכים של חיית המחמד ומפתחים רגישות לצרכים של זולתם.</li>
+                        <li>ילדים מטפלים בחיית המחמד ותוך כדי טיפול מפתחים תחושת אחריות ותחושת גאווה.</li>
+                        <li>ילדים לומדים להבין מסרים שאינם מילוליים, ובכך מפתחים רגישות יתר והבנה כלפי זולתם.</li>
+                        <li>ילדים לומדים דרך מסלול חיי חיית המחמד על החיים ועל השוני בין מצבים מסויימים לאחרים</li>
+                    </ol>
+                </div>
+                <div class="col span-1-of-4">
+                    <h3><i class="fas fa-heartbeat icon-big"></i> בריאות וטיפול</h3>
+                    <ol class="explain">
+                        <li >מחקרים הוכיחו כי ילדים שגדלים עם בעל חיים, מפתחים מערכת חיסונית חזקה יותר</li>
+                        <li>ילדים הגדלים עם חיות מחמד רגישים פחות למחלות ויראליות</li>
+                        <li>ילדים שמטפלים בבעלי חיים, לומדים ומפתחים מיומנויות טיפול באחר ובשונה.</li>
+                        <li>גם המבוגרים נהנים ונתרמים מהקרבה לבעלי חיים. כלבים   לדוגמא, תורמים לכושר הגופני ולפיתוח קשרים חברתיים חדשים (במהלך הטיפולים היומיומיים ובמסגרת השמירה על כושרו הפיזי של הכלב). מחקרים הוכיחו, שקרבת בני אדם לבעלי החיים וטיפול בהם תורמת להורדת לחץ דם ולרגיעה נפשית</li>
+                    </ol>
+                </div>
+                <div class="col span-1-of-4">
+                    <h3><i class="far fa-comments icon-big"></i> חברה ורגשות</h3>
+                    <ol class="explain">
+                        <li> הקשר עם חיית המחמד מפתח את יכולתם של הילדים לתקשורת פיזית ומנטאלית עם העולם הסובב אותם.</li>
+                        <li>הקשר לחיית המחמד מאפשר לילדים לבטא מגוון רחב של רגשות.</li>
+                        <li>ילדים לומדים לתת מעצמם וליהנות מקבלת אהבה מחיית המחמד שלהם (יכולת קבלה ונתינה).</li>
+                        <li>חיזוק הביטחון העצמי- הילדים זוכים לחיבה, אהבה וחברות ללא תנאי.</li>
+                        <li>ילדים שמטפחים חיית מחמד, יהיו יותר פתוחים וחברותיים וינהלו עם זולתם יחסים הדדים הוגנים.</li>
+                    </ol>
+                </div>
+            </div>
+            <p class="long-copy">
+                    אצל קשישים, בעלי חיים מפיגים תחושת בדידות ומשמשים כחבר קרוב וחשוב. הם מעודדים את הקשיש לפעילות גופנית, וממלאים את הצורך שלו להרגיש חשוב ונחוץ. <br>טיפול בבעלי חיים גורם להנאה ולסיפוק ללא לחצים ולבטים, המלווים קשר שיש בין בני אדם. למבוגרים, כמו לילדים, בעלי חיים מעניקים אהבה, קרבה וחברות ללא תנאי.
+                </p>
+        </section>
+        
+        <section class="adoption-section" id="adopt-dogs" style="margin-top: 10%">
+            <div class="main_row">
+                <h2><i class="fas fa-paw icon-big"></i> אימוץ כלבים</h2>
+                <p class="long-copy">
+                    אימוץ כלב מותנה בתשלום סל אימוץ הכולל בתוכו חיסון משושה ראשון, תילוע ועיקור/סירוס
+                    <br><br>
+                    <i class="fas fa-shekel-sign"></i> 
+                    עלות סל אימוץ: 750
+                    <br><br>
+                </p>    
+            </div>
+        <div class="main_row">
+            <ul class="adoption_dogs">
+                {% for dog in data['dogs'] if data%}
+                    <li>
+                        <div class="wrap" style="text-align: left">
+                            <img src="{{dog[0]}}" alt="" style="margin-top: 20px">
+                            <div class="content" style="margin-top: 20px">
+                                <h3>{{dog[2]|safe}}</h3>
+                                <p>{{dog[1]|safe}}</p>
+                            </div>
+                            <div class="container">
+                                <button class="adopt_me" onclick="window.location.href = 'contact/{{ dog[3] }}'" style="margin-bottom: 20%">אמצו אותי!</button>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        </section>
+
+        <section class="adoption-section" id="adopt-cats" style="margin-top: 10%">
+            <div class="main_row">
+                <h2><i class="fas fa-paw icon-big"></i> אימוץ חתולים</h2>
+                <p class="long-copy">
+                    אימוץ חתול מותנה בתשלום סל אימוץ הכולל בתוכו חיסון משושה ראשון, תילוע ועיקור/סירוס
+                    <br><br>
+                    <i class="fas fa-shekel-sign"></i>
+                    עלות סל אימוץ: 550
+                    <br><br>
+                </p>
+            </div>
+        <div class="main_row">
+            <ul class="adoption_cats">
+                {% for cat in data['cats'] %}
+                    <li>
+                        <div class="wrap" style="text-align: left">
+                            <img src="{{cat[0]}}" alt="" style="margin-top: 20px">
+                            <div class="content" style="margin-top: 20px">
+                                <h3>{{cat[2]|safe}}</h3>
+                                <p>{{cat[1]|safe}}</p>
+                            </div>
+                            <div class="container">
+                                <button class="adopt_me" onclick="window.location.href = 'contact'" style="margin-bottom: 20%">אמצו אותי!</button>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        </section>
+        <section class="important" id="important" style="margin-top: 10%">
+            <div class="main_row">
+                <h2><i class="fas fa-paw icon-big"></i> חשוב לדעת!</h2>
+            </div>
+            <div class="main_row">
+                <div class="col span-1-of-4">
+                    <img src="/static/img/love&dog.jpg" alt="love adoption" class="adoption">
+                </div>
+                <div class="col span-1-of-4">
+                    <h3><i class="far fa-grin-hearts icon-big"></i> רגישות ואחריות</h3>
+                    <ol class="explain">
+                        <li >ילדים לומדים מהם הצרכים של חיית המחמד ומפתחים רגישות לצרכים של זולתם.</li>
+                        <li>ילדים מטפלים בחיית המחמד ותוך כדי טיפול מפתחים תחושת אחריות ותחושת גאווה.</li>
+                        <li>ילדים לומדים להבין מסרים שאינם מילוליים, ובכך מפתחים רגישות יתר והבנה כלפי זולתם.</li>
+                        <li>ילדים לומדים דרך מסלול חיי חיית המחמד על החיים ועל השוני בין מצבים מסויימים לאחרים</li>
+                    </ol>
+                </div>
+                <div class="col span-1-of-4">
+                    <h3><i class="fas fa-heartbeat icon-big"></i> בריאות וטיפול</h3>
+                    <ol class="explain">
+                        <li >מחקרים הוכיחו כי ילדים שגדלים עם בעל חיים, מפתחים מערכת חיסונית חזקה יותר</li>
+                        <li>ילדים הגדלים עם חיות מחמד רגישים פחות למחלות ויראליות</li>
+                        <li>ילדים שמטפלים בבעלי חיים, לומדים ומפתחים מיומנויות טיפול באחר ובשונה.</li>
+                        <li>גם המבוגרים נהנים ונתרמים מהקרבה לבעלי חיים. כלבים   לדוגמא, תורמים לכושר הגופני ולפיתוח קשרים חברתיים חדשים (במהלך הטיפולים היומיומיים ובמסגרת השמירה על כושרו הפיזי של הכלב). מחקרים הוכיחו, שקרבת בני אדם לבעלי החיים וטיפול בהם תורמת להורדת לחץ דם ולרגיעה נפשית</li>
+                    </ol>
+                </div>
+                <div class="col span-1-of-4">
+                    <h3><i class="far fa-comments icon-big"></i> חברה ורגשות</h3>
+                    <ol class="explain">
+                        <li> הקשר עם חיית המחמד מפתח את יכולתם של הילדים לתקשורת פיזית ומנטאלית עם העולם הסובב אותם.</li>
+                        <li>הקשר לחיית המחמד מאפשר לילדים לבטא מגוון רחב של רגשות.</li>
+                        <li>ילדים לומדים לתת מעצמם וליהנות מקבלת אהבה מחיית המחמד שלהם (יכולת קבלה ונתינה).</li>
+                        <li>חיזוק הביטחון העצמי- הילדים זוכים לחיבה, אהבה וחברות ללא תנאי.</li>
+                        <li>ילדים שמטפחים חיית מחמד, יהיו יותר פתוחים וחברותיים וינהלו עם זולתם יחסים הדדים הוגנים.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="main_row">
+                <p class="long-copy">
+                    אצל קשישים, בעלי חיים מפיגים תחושת בדידות ומשמשים כחבר קרוב וחשוב. הם מעודדים את הקשיש לפעילות גופנית, וממלאים את הצורך שלו להרגיש חשוב ונחוץ. <br>טיפול בבעלי חיים גורם להנאה ולסיפוק ללא לחצים ולבטים, המלווים קשר שיש בין בני אדם. למבוגרים, כמו לילדים, בעלי חיים מעניקים אהבה, קרבה וחברות ללא תנאי.
+                </p>
+            </div>
+        </section>
+
+        <section class="about_us" id="about_us" style="margin-top: 10%">
+            <div class="main_row" style="margin-bottom: 0; padding-bottom: 0">
+                <h2><i class="fas fa-paw icon-big"></i> אודות העמותה </h2>
+                <p>
+                    עמותת PETS חיות הוקמה בשנת 1978 ע"י ריקי בצרי, ד"ר זאב שיינר ומונה הלפמן ז"ל, במטרה לסייע לכלבים ולחתולים חסרי בית ולשפר את מצב בעלי החיים בארץ. ריקי בצרי שמשמשת עד היום כיו"ר העמותה בהתנדבות, היא הרוח החיה שעומדת מאחורי פעילות העמותה לאורך כל השנים.
+
+PETS חיות מתנגדת להמתת בעלי חיים ודבקה בדרך זו מיום הקמתה, נלחמת על חיים ואיכות חייו של כל כלב או חתול.  עמותת PETS  חיות היא הראשונה בארץ שפעלה ללא מכלאות, מתוך עקרון ואמונה שעל בני האדם לשאת באחריות, לא לנטוש בעלי חיים ולראות במכלאה מוצא אחרון.
+                </p>
+                </div>
+        </section>
+
+        <footer style="background-color: #6f513e; margin-top: 10%">
+            <table style= "margin-top: 5%; margin-bottom: 1px; margin-right: 20%; text-align: center">
+                <col width="130">
+                <col width="130">
+                <tr>
+                    <td><a href="/manager">מנהל</a></td>
+                    <td><a href="/contact">צור קשר</a></td>
+                    <td><a href="https://www.mako.co.il/home-family-relationship/family-family-member/Article-8237179e11ac441006.htm">לינקים קשורים</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/contact">עלינו</a></td>
+                    <td><a href="/manager">עובדים ומנדבים</a></td>
+                </tr>
+            </table>
+        </footer>
+        <script>
+            //Get the button
+            var mybutton = document.getElementById("myBtn");
+
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+              } else {
+                mybutton.style.display = "none";
+              }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+        </script>
+    </body>
+
+
+</html>

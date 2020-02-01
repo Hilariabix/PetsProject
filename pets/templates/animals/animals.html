@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-5 is-offset-4">
+    <div class="form-row">
+        <div class="col-md-0 mb-1">
+            <h3 class="title">Animals | <a href="/">Home</a></h3>
+        </div>
+        <div class="col-md-0 mb-1">
+            <a href="/animals/add">
+                <button type="button" class="btn btn-primary btn-sm">Add</button>
+            </a>
+        </div>
+    </div>
+
+    {% include "notifications.html" ignore missing %}
+
+    <div class="box">
+        {% if animals_list %}
+            <table class="table" id="myTable">
+                <tr>
+                    <th>Image</th>
+                    <th>Name <br><input type="text" id="name" onkeyup="myFunction(1, 'name')" placeholder="Filter by name"></th>
+                    <th>Breed <br><input type="text" id="breed" onkeyup="myFunction(2, 'breed')" placeholder="Filter by bread"></th>
+                    <th>Gender<br><input type="text" id="gender" onkeyup="myFunction(3, 'gender')" placeholder="Filter by gender"></th>
+                    <th>Kind<br><input type="text" id="kind" onkeyup="myFunction(4, 'kind')" placeholder="Filter by the kind of animal"></th>
+                    <th>Adopted<br><input type="text" id="adopted" onkeyup="myFunction(5, 'adopted')" placeholder="Filter by adopted"></th>
+                </tr>
+            {% for animal in animals_list %}
+                <tr>
+                    <td>
+                        <a href="/animals/{{ animal.id }}">
+                            <img class="img-fluid img-thumbnail" alt="{{ animal.name }}-image" src="{{ animal.profile_image }}" height="150" width="150"/>
+                        </a>
+                    </td>
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.breed}}</td>
+                    <td>{{ animal.gender.name }}</td>
+                    <td>{{ animal.kind.name }}</td>
+                    <td>{{ "Yes" if animal.adopted else "No" }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+          <h1>No Animals</h1>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function myFunction(field_index, field) {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById(field);
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[field_index];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+{% endblock %}

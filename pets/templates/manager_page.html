@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <title>Pets - Manager Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            padding: 10px;
+            background: #f1f1f1;
+        }
+
+        .row {
+            text-align: right;
+        }
+
+        .title {
+           text-align: right;
+        }
+
+        .header {
+            text-align: center;
+            background: #a07b51;
+            font-family: 'Rubik', sans-serif;
+            padding: 70px;
+            border-radius: 15px;
+        }
+
+        .header h1 {
+            font-size: 50px;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        .nav-link {
+            text-align: right;
+            font-size: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="row" style="direction: rtl; text-align: right">
+            <h1>דף מנהל</h1>
+            <img src="../static/img/others/dog-and-a-cat.svg" style="height: 120px; padding-right: 70%;">
+        </div>
+        <h2 style="text-align: right; color: white">  <i class="fas fa-hand-holding-heart"></i> כל המידע שאתה צריך, תחת קורת גג אחת   </h2>
+        </header>
+    <nav class="navbar navbar-light" style="background-color: #fcdcb9; direction: rtl">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="#animals">בעלי חיים</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#employees">עובדים</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">אתר הבית</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">התנתק</a>
+          </li>
+        </ul>
+    </nav>
+    <div id="animals" style="margin-bottom: 150px">
+        <div class="title">
+            <h1 class="display-5" style="margin: 20px">בעלי חיים</h1>
+            <p class="lead">התפלגויות הקשורות לבעלי חיים</p>
+        </div>
+        <hr class="my-3">
+        <div class="row">
+            <div class="col span-1-of-2">
+                <h4><i class="fas fa-dog"></i> כלבים </h4>
+                <div id="dogchart"></div>
+            </div>
+            <div class="col span-2-of-2">
+                <h4><i class="fas fa-cat"></i> חתולים </h4>
+                <div id="catchart"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <h4>גורי כלבים</h4>
+                <div id="puppieschart" style="border-radius: 130px"></div>
+            </div>
+            <div class="col span-2-of-2">
+                <h4>גורי חתולים</h4>
+                <div id="kittenschart"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <h4>כלבים מאומצים</h4>
+                <div id="adopted_dogchart" style="border-radius: 130px"></div>
+            </div>
+            <div class="col span-2-of-2">
+                <h4>חתולים מאומצים</h4>
+                <div id="adopted_catchart"></div>
+            </div>
+        </div>
+        <a class="btn btn-primary btn-lg" href="/animals" role="button" style="margin-top: 20px;">כל בעלי חיים</a>
+    </div>
+    <div id="employees" style="margin-bottom: 400px">
+        <div class="title">
+            <h1 class="display-5">עובדים</h1>
+        </div>
+        <hr class="my-3">
+        <div class="row">
+            <div class="col span-1-of-4" style="text-align: right">
+            </div>
+            <div class="col span-2-of-4" style="text-align: right">
+            </div>
+            <div class="col span-3-of-4" style="text-align: right">
+                <p class="lead">להלן רשימת העובדים <br> לצפייה בפרטי העובדים <br> יש ללחוץ על הכפתור</p>
+                <div class="row" style="direction: rtl">
+                    <a class="btn btn-primary btn-lg" href="/employees" role="button" style="margin-top: 20px;">כל העובדים</a>
+                </div>
+                <div class="row" style="direction: rtl">
+                    <a class="btn btn-primary btn-lg" href="#header" role="button" style="margin-top: 20px;">חזרה למעלה</a>
+                </div>
+            </div>
+            <div class="col span-4-of-4" style="text-align: right">
+                <ul class="list-group">
+                    {% for employee in data["employees"] %}
+                      <li class="list-group-item" style="text-align: center;">{{ employee.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(dogChart);
+        google.charts.setOnLoadCallback(catChart);
+        google.charts.setOnLoadCallback(puppiesChart);
+        google.charts.setOnLoadCallback(kittensChart);
+        google.charts.setOnLoadCallback(adopted_dogChart);
+        google.charts.setOnLoadCallback(adopted_catChart);
+
+        function dogChart() {
+          var dogs ={{ data["dogs"]|safe }};
+          var data = google.visualization.arrayToDataTable(dogs);
+          var options = {'width':500, 'height':350};
+          var chart = new google.visualization.PieChart(document.getElementById('dogchart'));
+          chart.draw(data, options);
+        }
+        function catChart() {
+            var cats ={{ data["cats"]|safe }};
+            var data = google.visualization.arrayToDataTable(cats);
+            var options = {'width':500, 'height':350};
+            var chart = new google.visualization.PieChart(document.getElementById('catchart'));
+            chart.draw(data, options);
+        }
+        function puppiesChart() {
+          var puppies ={{ data["puppies"]|safe }};
+          var data = google.visualization.arrayToDataTable(puppies);
+          var options = {'width':500, 'height':350};
+          var chart = new google.visualization.PieChart(document.getElementById('puppieschart'));
+          chart.draw(data, options);
+        }
+        function kittensChart() {
+          var kittens ={{ data["kittens"]|safe }};
+          var data = google.visualization.arrayToDataTable(kittens);
+          var options = {'width':500, 'height':350};
+          var chart = new google.visualization.PieChart(document.getElementById('kittenschart'));
+          chart.draw(data, options);
+        }
+        function adopted_dogChart() {
+          var dogs ={{ data["adopted_dogs"]|safe }};
+          var data = google.visualization.arrayToDataTable(dogs);
+          var options = {'width':500, 'height':350};
+          var chart = new google.visualization.PieChart(document.getElementById('adopted_dogchart'));
+          chart.draw(data, options);
+        }
+        function adopted_catChart() {
+          var cats ={{ data["adopted_cats"]|safe }};
+          var data = google.visualization.arrayToDataTable(cats);
+          var options = {'width':500, 'height':350};
+          var chart = new google.visualization.PieChart(document.getElementById('adopted_catchart'));
+          chart.draw(data, options);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/css/autocomplete.css" />
+<script src="/static/js/autocomplete.js"></script>
+<script src="/static/js/animals.breed.js"></script>
+
+
+<div class="container center_div">
+    <h3 class="title">{{ title }}</h3>
+    <form method="{{ method }}" action="{{ action }}" autocomplete="off" enctype=multipart/form-data>
+
+        <div class="form-row">
+            <!-- profile_image -->
+            <div class="col-md-4 mb-3">
+                {% if animal and animal.profile_image %}
+                    <img id="animalProfileImage" src="{{ animal.profile_image if animal else "" }}" alt="{{ animal.name if animal else "Profile Image" }}"/>
+                {% else %}
+                    <label for="file">Profile Image</label>
+                    <input type="file" name="photo">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- name -->
+            <div class="col-md-4 mb-3">
+                <label for="inputAnimalName">Name</label>
+                <input name="name" type="text" class="form-control" id="inputAnimalName" value="{{ animal.name if animal else "" }}" required>
+            </div>
+
+            <!-- kind -->
+            <div class="col-md-1 mb-0">
+                <fieldset class="form-group">
+                    <label>Kind</label>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="kind" id="animalKindDog" value="Dog" {{ "checked" if not animal or animal.kind.name == "Dog" else "" }} onchange="animalKindCheck();">
+                                <label class="form-check-label" for="animalKindDog">Dog</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="kind" id="animalKindCat" value="Cat" {{ "checked" if animal and animal.kind.name == "Cat" else "" }} onchange="animalKindCheck();">
+                                <label class="form-check-label" for="animalKindCat">Cat</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <!-- gender -->
+            <div class="col-md-1 mb-0">
+                <fieldset class="form-group">
+                    <label>Gender</label>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="animalGenderMale" value="Male" {{ "checked" if not animal or animal.gender.name == "Male" else "" }} required>
+                                <label class="form-check-label" for="animalGenderMale">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="animalGenderFemale" value="Female" {{ "checked" if animal and animal.gender.name == "Female" else "" }}>
+                                <label class="form-check-label" for="animalGenderFemale">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- cage -->
+            <div class="col-md-1 mb-0">
+                <label for="txtAnimalCage">Cage</label>
+                <input name="cage" type="number" step="1" min="0" max="100" class="form-control" id="txtAnimalCage" value="{{ animal.cage if animal else ""}}" required>
+            </div>
+
+            <!-- breed -->
+            <div class="col-md-4 mb-3">
+                <div class="autocomplete">
+                    <label for="inputAnimalBreed">Breed</label>
+                    <input name="breed" type="text" class="form-control" id="inputAnimalBreed" value="{{ animal.breed if animal else "" }}" required>
+                </div>
+            </div>
+
+            <!-- weight -->
+            <div class="col-md-1 mb-0">
+                <label for="txtAnimalWeight">Weight</label>
+                <input name="weight" type="number" step="0.01" min="0" max="200" class="form-control" id="txtAnimalWeight" value="{{ animal.weight if animal else ""}}" required>
+            </div>
+
+            <!-- size -->
+            <div class="col-md-2 mb-0">
+                <fieldset class="form-group">
+                    <label>Size</label>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="size" id="animalSizeSmall" value="Small" {{ "checked" if not animal or animal.size.name == "Small" else "" }} required>
+                                <label class="form-check-label" for="animalSizeSmall">Small</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="size" id="animalSizeMedium" value="Medium" {{ "checked" if animal and animal.size.name == "Medium" else "" }}>
+                                <label class="form-check-label" for="animalSizeMedium">Medium</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="size" id="animalSizeBig" value="Big" {{ "checked" if animal and animal.size.name == "Big" else "" }}>
+                                <label class="form-check-label" for="animalSizeBig">Big</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- birth_date -->
+            <div class="col-md-0 mb-3">
+                <label for="inputAnimalBirthDate">Birth Date</label>
+                <input name="birth_date" type="date" class="form-control" id="inputAnimalBirthDate" value="{{ animal.birth_date.strftime("%Y-%m-%d") if animal and animal.birth_date else "" }}">
+            </div>
+            <!-- arrival_date -->
+            <div class="col-md-0 mb-3">
+                <label for="inputAnimalArrivalDate">Arrival Date</label>
+                <input name="arrival_date" type="date" class="form-control" id="inputAnimalArrivalDate" value="{{ animal.arrival_date.strftime("%Y-%m-%d") if animal and  animal.arrival_date else "" }}">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <!-- is_trained -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="animalIsTrained" name="is_trained" {{ "checked" if animal and animal.is_trained else "" }}>
+                    <label class="form-check-label" for="animalIsTrained">Trained</label>
+                </div>
+                <!-- fruitful -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="animalFruitful" name="fruitful" {{ "checked" if animal and animal.fruitful else "" }}>
+                    <label class="form-check-label" for="animalFruitful">Fruitful</label>
+                </div>
+                <!-- friendly -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="animalFriendly" name="friendly" {{ "checked" if animal and animal.friendly else "" }}>
+                    <label class="form-check-label" for="animalFriendly">Friendly</label>
+                </div>
+                <!-- adopted -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="animalAdopted" name="adopted" {{ "checked" if animal and animal.adopted else "" }}>
+                    <label class="form-check-label" for="animalAdopted">Adopted</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- details -->
+            <div class="col-lg-8 mb-3">
+                <label for="animalDetails">Details</label>
+                <textarea name="details" type="textarea" class="form-control" id="animalDetails">{{ animal.details if animal and animal.details else "" }}</textarea>
+            </div>
+        </div>
+
+        <div id="divDog" class="form-group row">
+            <!-- chip -->
+            <div class="col-md-4 mb-3">
+                <label for="inputDogChip">Chip</label>
+                <input name="chip" type="number" class="form-control" id="inputDogChip" value="{{ animal.chip if animal and "chip" in animal.__dir__() else "" }}">
+            </div>
+            <!-- is_dangerous -->
+            <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="dogIsDangerous" name="is_dangerous" {{ "checked" if animal and "is_dangerous" in animal.__dir__() and animal.is_dangerous else "" }}>
+                    <label class="form-check-label" for="dogIsDangerous">Dangerous</label>
+                </div>
+            </div>
+        </div>
+        <div id="divCat" class="form-group row">
+            <div class="col-sm-10">
+                <!-- is_playful -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="catIsPlayful" name="is_playful" {{ "checked" if animal and "is_playful" in animal.__dir__() and animal.is_playful else "" }}>
+                    <label class="form-check-label" for="catIsPlayful">Playful</label>
+                </div>
+                <!-- is_hairy -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="catIsHairy" name="is_hairy" {{ "checked" if animal and "is_hairy" in animal.__dir__() and animal.is_hairy else "" }}>
+                    <label class="form-check-label" for="catIsHairy">Hairy</label>
+                </div>
+                <!-- is_loudly -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="catIsLoudly" name="is_loudly" {{ "checked" if animal and "is_dangerous" in animal.__dir__() and animal.is_dangerous else "" }}>
+                    <label class="form-check-label" for="catIsLoudly">Loudly</label>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+        <!-- Button -->
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+                {% if animal %}
+                    <a href="#myModal" class="trigger-btn" data-toggle="modal">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+{#				<div class="icon-box">#}
+{#					<i class="material-icons">&#xE5CD;</i>#}
+{#				</div>#}
+				<h4 class="modal-title">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+                <p>Do you really want to delete <b>{{ animal.name if animal else "" }}</b>?<br/>This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                <a href="/animals/delete/{{ animal.id }}">
+				    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+function animalKindCheck() {
+    if (document.getElementById('animalKindDog').checked) {
+        document.getElementById('divDog').style.display = 'block';
+        document.getElementById('divCat').style.display = 'none';
+        autocomplete(document.getElementById("inputAnimalBreed"), dogBreeds);
+    }
+    else {
+        document.getElementById('divCat').style.display = 'block';
+        document.getElementById('divDog').style.display = 'none';
+        autocomplete(document.getElementById("inputAnimalBreed"), catBreeds);
+    }
+}
+
+animalKindCheck();
+
+</script>
+
+{% endblock %}

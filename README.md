@@ -1,2 +1,2 @@
-# PetsProject
-web site for pets shelter
+# Pets
+Final degree project
