@@ -1,12 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required
-
 from pets import db
 from pets.models.animal import Animal, AnimalKind
-from pets.models.cat import Cat
-from pets.models.dog import Dog
+from pets.models.animal_factory import AnimalFactory
 from pets.utils.file_system import FileSystem
-
 animals = Blueprint("animals", __name__)
 
 
@@ -64,13 +61,8 @@ def add_animal_view():
 @login_required
 def add_animal():
     try:
-        animal_kind = request.form.get("kind")
-        if animal_kind == AnimalKind.Dog.name:
-            new_animal = Dog(request.form)
-        elif animal_kind == AnimalKind.Cat.name:
-            new_animal = Cat(request.form)
-        else:
-            raise ValueError("unknown animal kind: {}".format(animal_kind))
+        animal_kind = AnimalKind(request.form.get("kind"))
+        new_animal = AnimalFactory.create(animal_kind, request.form)
 
         profile_image = FileSystem.upload_photo_from_request(request, "photo", "adoption")
         if profile_image:
